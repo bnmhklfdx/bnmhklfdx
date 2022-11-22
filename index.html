@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head  >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hey girl，please login.</title>
+    <link href="img/icon2.png" rel="shortcut icon" type="image/x-icon">
+    <!--  <audio src="music/所念皆星河.mp3" loop="loop" autoplay="autoplay"  controls=true id="audio"></audio>--> 
+    <audio src="music/所念皆星河.mp3" loop="loop" autoplay="autoplay"  controls=true id="audio" width="230px" height="60px"  style="border-radius:80px;opacity:.8" ></audio>
+    <!--<audio src="music/所念皆星河.mp3"  loop="loop" autoplay="autoplay"  controls=true width="230px" height="60px" style="border-radius:80px;opacity:.8"  id="audio">  -->
+    <!-- <script > requestFullScreen();
+    </script> -->
+    <!-- <script src="js/jquery-1.8.4.min.js" type="text/javascript"></script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+
+
+        #login {
+            background-color: rgba(0, 0, 0, 0.212);
+            width: 618px;
+            height: 374px;
+            margin: 80px auto;
+            /* border: 2px dashed pink; */
+        }
+
+
+        .title {
+            font: 20px 微软雅黑;
+            margin-top: 20px;
+            text-align: center;
+            color: #333333;
+            transition: color 0.5s;
+            -moz-transition: color 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: color 0.5s;
+            /* Safari and Chrome */
+            -o-transition: color 0.5s;
+            /* Opera */
+        }
+
+        .title:hover {
+            color: rgba(255, 0, 0, 0.438);
+            font-weight: bold;
+        }
+
+        .tips {
+            font: 16px 微软雅黑;
+            margin-top: 20px;
+            text-align: center;
+            color: #666666;
+            transition: color 0.5s;
+            -moz-transition: color 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: color 0.5s;
+            /* Safari and Chrome */
+            -o-transition: color 0.5s;
+            /* Opera */
+
+            transition: letter-spacing 0.5s;
+            -moz-transition: letter-spacing 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: letter-spacing 0.5s;
+            /* Safari and Chrome */
+            -o-transition: letter-spacing 0.5s;
+            /* Opera */
+        }
+
+        .tips:hover {
+            /* color: rgba(0, 0, 255, 0.603); */
+            letter-spacing: 4px;
+        }
+
+        .img {
+            height: 91px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #img1 {
+            width: 70px;
+            /* border: 1px solid skyblue; */
+            border-radius: 50%;
+            cursor: move;
+            transition: width 0.5s;
+            -moz-transition: width 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: width 0.5s;
+            /* Safari and Chrome */
+            -o-transition: width 0.5s;
+            /* Opera */
+        }
+
+        #img1:hover {
+            width: 91px;
+            border: 2px solid rgba(0, 0, 0, 0.342);
+        }
+
+        #s1 {
+            transition: font-size 0.5s;
+            -moz-transition: font-size 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: font-size 0.5s;
+            /* Safari and Chrome */
+            -o-transition: font-size 0.5s;
+            /* Opera */
+        }
+
+        /* #s1:hover {
+            font-size: 25px;
+        } */
+
+        #s2 {
+            transition: font-size 0.5s;
+            -moz-transition: font-size 0.5s;
+            /* Firefox 4 */
+            -webkit-transition: font-size 0.5s;
+            /* Safari and Chrome */
+            -o-transition: font-size 0.5s;
+            /* Opera */
+        }
+
+        /* #s2:hover {
+            font-size: 25px;
+        } */
+
+
+        .login {
+            margin-top: 20px;
+            font: 8px 微软雅黑;
+            text-align: center;
+            color: #666666;
+        }
+
+
+
+        #username {
+            height: 20px;
+            background-color: #ffffff00;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            outline: none;
+            color: rgba(255, 192, 203, 0.664);
+            font-size: 16px;
+        }
+
+
+
+        #pwd {
+            height: 20px;
+            background-color: #ffffff00;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            outline: none;
+            color: rgba(255, 192, 203, 0.664);
+            font-size: 16px;
+        }
+
+        #btn {
+            cursor: pointer;
+            width: 80px;
+            height: 30px;
+            border-radius: 30px;
+            background-color: rgba(255, 0, 0, 0.473);
+}
+            #btn:hover {
+            background-color: rgba(0, 255, 0, 0.473);
+            }
+        
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+            var username = document.getElementById("username");
+            var pwd = document.getElementById("pwd");
+            var s1 = document.getElementById("s1");
+            var s2 = document.getElementById("s2");
+            var loading = document.getElementById("loading");
+            function tiaozhuan() {
+                location.href = "page.html";
+            }
+            
+            
+
+           
+
+             btn.onclick = function () {
+                if (username.value == "pxw" && pwd.value == "221") {
+                    loading.innerHTML = '<img src="img/loading2.gif" alt="" width="50px">';
+                    btn.style.backgroundColor = "rgb(0, 128, 0)";
+                    
+                    window.setTimeout(tiaozhuan, 5000);
+                } else {
+                    alert("Incorrect username or password,please login again.");
+                    // username.value = "";
+                    pwd.value = "";
+                }
+
+            }
+
+
+            username.onfocus = function () {
+                s1.style.fontSize = "25px";
+            }
+            username.onblur = function () {
+                s1.style.fontSize = "12px";
+            }
+            pwd.onfocus = function () {
+                s2.style.fontSize = "25px";
+            }
+            pwd.onblur = function () {
+                s2.style.fontSize = "12px";
+            }
+            s1.onmouseover = function () {
+                s1.style.fontSize = "25px";
+            }
+            s1.onmouseout = function () {
+                s1.style.fontSize = "12px";
+            }
+            s2.onmouseover = function () {
+                s2.style.fontSize = "25px";
+            }
+            s2.onmouseout = function () {
+                s2.style.fontSize = "12px";
+            }
+        }
+
+
+
+    </script>
+</head>
+
+<body   >
+    
+    <!-- <embed src="music/所念皆星河.mp3" hidden="false" autostart="true" loop="5" width="230px" height="60px" style="border-radius:80px;opacity:.8"  id="embed"> -->
+    <video autoplay muted loop style="width:100%" id="v1">
+        <source src="img/bg2.mp4">
+    </video>
+    <div id="login">
+        <div class="title">快速安全登录</div>
+        <div class="tips">请输入账号密码进行登录，<br>安全登录，防止盗号。</div>
+        <div class="img"> <img src="img/user.jpg" alt="" id="img1"></div>
+        <!-- <div class="login"> <a href="#" id="clickIt"> 账号密码登录</a></div> -->
+        <div class="login">
+            <span id="s1">username:</span><input type="text" id="username" value="pxw"><br><br>
+            <span id="s2">password:</span><input type="password" id="pwd" value="221"><br><br>
+            <button id="btn">login</button>
+            <div id="loading"></div>
+        </div>
+    </div>
+    
+
+    <script>
+
+        function playSound(){
+            var audio=document.getElementById("audio");
+            // var embed = document.getElementById("embed");
+          //  window.alert(embed) 
+            if(audio.paused ) {  //如果音频是暂停状态
+                audio.load;     //加载音频文件
+                audio.play();	//播放
+            }
+            // else if(!embed.paused)
+            // {
+            //     audio.pause()
+            // }
+        }
+
+
+    //  window.onload =  requestFullScreen;
+
+        function requestFullScreen(element) {
+            var element = document.documentElement;
+            // 判断各种浏览器，找到正确的方法
+            //alert(element.webkitRequestFullScreen);
+            var requestMethod = element.requestFullScreen || //W3C
+                element.webkitRequestFullScreen || //Chrome等
+                element.mozRequestFullScreen || //FireFox
+                element.msRequestFullScreen; //IE11
+            if (requestMethod) {
+                requestMethod.call(element);
+            }
+            else if (typeof window.ActiveXObject !== "undefined") {//for Internet Explorer
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript !== null) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
+        }
+        //调用
+        window.onclick=function () {
+            playSound();
+            requestFullScreen();
+
+        }
+
+
+
+        var video = document.getElementById('v1');
+
+        video.playbackRate = 2;
+
+
+ 
+
+
+    </script>
+</body>
+
+</html>

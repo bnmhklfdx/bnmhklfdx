@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Have a good time ^_^</title>
+    <link href="img/icon2.png" rel="shortcut icon" type="image/x-icon">
+    <!--<embed src="music/happy birthday.mp3" hidden="true" autostart="true" loop="5">  -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="css/component.css">
+    <!--<embed src="music/夜、萤火虫和你.mp3" hidden="false" autostart="true" loop="5" width="230px" height="60px" style="border-radius:80px;opacity:.8"> -->
+
+    <style type="text/css">
+        #Layer1 {
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+            top: 60%;
+        }
+
+        .STYLE3 {
+            font-size: medium
+        }
+    </style>
+</head>
+
+
+<body  id="divv">
+    <div class="container demo-1">
+
+        <div class="content">
+            <div id="large-header" class="large-header"> <canvas id="demo-canvas"   width="100%" height="100%">    
+
+            </canvas>
+                <h1 class="main-title">
+                    <font color="skyblue">H</font>
+                    <font color="red">A</font>
+                    <font color="yellow">P</font>
+                    <font color="orange">P</font>
+                    <font color="green">Y</font>
+                    <br>
+                    <font color="blue">B</font>
+                    <font color="white">I</font>
+                    <font color="pink">R</font>
+                    <font color="#699">T</font>
+                    <font color="purple">H</font>
+                    <font color="brown">D</font>
+                    <font color="#999">A</font>
+                    <font color="#088">Y</font>
+                    <br><span style="font-size: 14px;color: rgba(255, 192, 203, 0.548);">旺旺老婆，两周年快乐吖</span>
+                </h1>
+            </div>
+            <div id="Layer1">
+                <nav class="codrops-demos">
+                    <a href="five-chess\index.html" target="_blank">五子棋</a>
+<!--                    <a href="javascript:;" >相册（测试中）</a>-->
+<!--                    <a href="comment.html" target="_blank">留言</a>-->
+                    <a href="comment.html" target="_blank">留言</a>
+                    <a href="EasterEgg.html" target="_blank">烟花</a>
+                    <a href="2048.html" target="_blank">2048</a>
+                </nav>
+            </div>
+        </div>
+       <!-- <audio src="music/夜、萤火虫和你.mp3" loop="loop" autoplay="autoplay" id="audio"></audio>-->
+    </div>
+
+
+    <script src="js/tweenlite.min.js"></script>
+    <script src="js/easepack.min.js"></script>
+    <script src="js/raf.js"></script>
+    <script src="js/demo-1.js"></script>
+    <div style="display:none">
+        <script>
+            // var _hmt = _hmt || [];
+            // (function () {
+            //     var hm = document.createElement("script");
+            //     hm.src = "https://hm.baidu.com/hm.js?3574e441e78f507961a1d3225d77da46";
+            //     var s = document.getElementsByTagName("script")[0];
+            //     s.parentNode.insertBefore(hm, s);
+            // })();
+
+
+        //     function playSound(){
+        //     var audio=document.getElementById("audio");
+        //     // var embed = document.getElementById("embed");
+        //   //  window.alert(embed) 
+        //     if(audio.paused ) {  //如果音频是暂停状态
+        //         audio.load;     //加载音频文件
+        //         audio.play();	//播放
+        //     }
+        //     // else if(!embed.paused)
+        //     // {
+        //     //     audio.pause()
+        //     // }
+        // }
+        // //调用
+
+        function requestFullScreen(element) {
+            var element = document.documentElement;
+            // 判断各种浏览器，找到正确的方法
+            //alert(element.webkitRequestFullScreen);
+            var requestMethod = element.requestFullScreen || //W3C
+                element.webkitRequestFullScreen || //Chrome等
+                element.mozRequestFullScreen || //FireFox
+                element.msRequestFullScreen; //IE11
+            if (requestMethod) {
+                requestMethod.call(element);
+            }
+            else if (typeof window.ActiveXObject !== "undefined") {//for Internet Explorer
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript !== null) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
+        }
+        // window.onclick=function () {
+        //     requestFullScreen();
+        // }
+
+            
+
+
+        </script>
+
+
+    </div>
+</body>
+
+</html>
