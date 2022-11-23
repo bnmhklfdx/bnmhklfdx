@@ -46,7 +46,7 @@
     }
 
     .head {
-      width: 480px ;
+      width: 800px ;
       height: 50px;
       margin: 0 auto;
       font-size: 25px;
@@ -131,8 +131,12 @@
       background-color: #a6c
     }
 
-    .n8192 {
+    .n8192  {
       background-color: #93c
+    }
+
+    .n16384,.n32768  {
+      background-color: rgb(57, 9, 81)
     }
 
     .n2,
@@ -182,6 +186,10 @@
       <a href="#" class="model" value="4">4X4</a>
       <a href="#" class="model" type="button">5X5</a>
       <a href="#" class="model" type="button">6X6</a>
+      <a href="#" class="model" type="button">无尽模式</a>
+      <a href="#" class="model" type="button">正常模式</a>
+
+
       <!-- <input type="text" id="model"> -->
       <!-- <button type="button" name="button" id="set">设置游戏</button> -->
     </div>
@@ -333,6 +341,7 @@
       return document.getElementsByClassName(cls);
     }
 
+    var flag = false;                       //////////  全局变量控制  赢的分数
 
     
 
@@ -507,7 +516,9 @@
             } else {
               $("c" + r + c).innerHTML = arr[r][c];
               $("c" + r + c).className = "cell n" + arr[r][c]; //添加不同数字的颜色
-              if (obj.ROW == 3 && arr[r][c] == 1024) {
+              if(flag == false)
+              {
+                if (obj.ROW == 3 && arr[r][c] == 1024) {
                 win = 1;
               } else if (obj.ROW == 4 && arr[r][c] == 2048) {
                 win = 1;
@@ -516,6 +527,9 @@
               } else if (obj.ROW == 6 && arr[r][c] == 8192) {
                 win = 1;
               }
+
+              }
+              
             }
           }
         }
@@ -707,6 +721,7 @@
       obj.gameStart();
     }
     //切换模式
+
     function getModel(e) { //事件冒泡获取a元素
       var a = e.target,
         modelValue = 4;
@@ -719,6 +734,15 @@
           modelValue = 5;
         } else if (a.innerHTML == "6X6") {
           modelValue = 6;
+        }
+        else if (a.innerHTML == "无尽模式") {
+          flag = true;
+          // window.alert("无尽");
+        }
+        else if (a.innerHTML == "正常模式") {
+          flag = false;
+          // window.alert("正常");
+
         }
         obj.ROW = obj.CELL = modelValue;
         obj.createEle = 1; //需要创建格子div元素的标志
