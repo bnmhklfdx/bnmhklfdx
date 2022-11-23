@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  id="m_html" style="height:100%">
 
 <head>
   <title> 2048-game </title>
@@ -169,7 +169,7 @@
   </style>
 </head>
 
-<body>
+<body    id = "m_body" >
   <div id="game">
   </div>
   <div class="head clear">
@@ -191,7 +191,137 @@
   <div id="gameover">
     <h1 id="Score"></h1>
     <a href="#" id="again" onclick="obj.gameStart()">Try again</a>
+
+    
+    <script type="text/javascript">
+      var system ={};  
+        var p = navigator.platform;       
+        system.win = p.indexOf("Win") == 0;  
+        system.mac = p.indexOf("Mac") == 0;  
+        system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);     
+        if(system.win||system.mac||system.xll){//如果是电脑跳转到
+                window.location.href="#";  
+                // window.alert("电脑");
+        }else{  //如果是手机,跳转到？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？????????????
+              window.location.href="#";
+              // window.alert("手机") ;
+
+              var EventUtil = {
+      addHandler: function (element, type, handler) {
+        if (element.addEventListener)
+          element.addEventListener(type, handler, false);
+        else if (element.attachEvent)
+          element.attachEvent("on" + type, handler);
+        else
+          element["on" + type] = handler;
+      },
+      removeHandler: function (element, type, handler) {
+        if (element.removeEventListener)
+          element.removeEventListener(type, handler, false);
+        else if (element.detachEvent)
+          element.detachEvent("on" + type, handler);
+        else
+          element["on" + type] = handler;
+      },
+      /**
+       * 监听触摸的方向
+       * @param target            要绑定监听的目标元素
+       * @param isPreventDefault  是否屏蔽掉触摸滑动的默认行为（例如页面的上下滚动，缩放等）
+       * @param upCallback        向上滑动的监听回调（若不关心，可以不传，或传false）
+       * @param rightCallback     向右滑动的监听回调（若不关心，可以不传，或传false）
+       * @param downCallback      向下滑动的监听回调（若不关心，可以不传，或传false）
+       * @param leftCallback      向左滑动的监听回调（若不关心，可以不传，或传false）
+       */
+      listenTouchDirection: function (target, isPreventDefault, upCallback, rightCallback, downCallback, leftCallback) {
+        this.addHandler(target, "touchstart", handleTouchEvent);
+        this.addHandler(target, "touchend", handleTouchEvent);
+        this.addHandler(target, "touchmove", handleTouchEvent);
+        var startX;
+        var startY;
+        function handleTouchEvent(event) {
+          switch (event.type) {
+            case "touchstart":
+              startX = event.touches[0].pageX;
+              startY = event.touches[0].pageY;
+              break;
+            case "touchend":
+              var spanX = event.changedTouches[0].pageX - startX;
+              var spanY = event.changedTouches[0].pageY - startY;
+              
+            if (Math.abs(spanX) > Math.abs(spanY)) {      //认定为水平方向滑动
+                if (spanX > 30) {         //向右
+                  if (rightCallback)
+                    rightCallback();
+                } else if (spanX < -30) { //向左
+                  if (leftCallback)
+                    leftCallback();
+                }
+              } else {                                    //认定为垂直方向滑动
+                if (spanY > 30) {         //向下
+                  if (downCallback)
+                    downCallback();
+                } else if (spanY < -30) {//向上
+                  if (upCallback)
+                    upCallback();
+                }
+              }
+
+              break;
+            case "touchmove":
+              //阻止默认行为
+              if (isPreventDefault)
+                event.preventDefault();
+              break;
+          }
+        }
+      }
+    };
+
+    function up() {
+       console.log("上");
+      //  window.alert("上") ;
+       obj.keyCd = 2;
+      obj.moveUp();
+
+      $("score").innerHTML = obj.score; //更新分数
+
+
+    }
+    function right() {
+     console.log("右");
+    //  window.alert("右") ;
+     obj.keyCd = 1;
+     obj.moveRight();
+     $("score").innerHTML = obj.score; //更新分数
+
+
+    }
+    function down() {
+      console.log("下");
+      // window.alert("下") ;
+      obj.keyCd = 2;
+      obj.moveDown();
+      $("score").innerHTML = obj.score; //更新分数
+
+
+    }
+    function left() {
+      console.log("左");
+      // window.alert("左") ;
+      obj.keyCd = 1;
+      obj.moveLeft();
+      $("score").innerHTML = obj.score; //更新分数
+
+
+    }
+
+    EventUtil.listenTouchDirection(document.getElementById("m_html"), true, up, right, down, left)
+        }
+  </script>
   </div>
+
+
+
   <script type="text/javascript">
     var arr = [];
 
@@ -202,6 +332,10 @@
     function C(cls) {
       return document.getElementsByClassName(cls);
     }
+
+
+    
+
     var obj = {
       ROW: 4,
       CELL: 4,
@@ -213,6 +347,9 @@
       createEle: 0, //是否需要创建元素
       eleFragment: "", //文档片段变量
       //游戏开始
+
+
+      
       gameStart: function() {
         obj.init();
         document.onkeydown = function(e) { //自动获得事件对象
@@ -234,6 +371,11 @@
               obj.moveDown();
               break;
           }
+
+          
+
+
+
           $("score").innerHTML = obj.score; //更新分数
         }
 
@@ -595,6 +737,12 @@
     //   obj.gameStart();
     //   console.log(modelValue);
     // }
+
+    
+
+
+
+
   </script>
 
 </body>
